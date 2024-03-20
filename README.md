@@ -1,7 +1,7 @@
 # cuNMF - Nonnegative Matrix Factorization using CUDA
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
- ![GitHub Release](https://img.shields.io/github/v/release/maximilianbehr/cuNMF?display_name=release&style=flat)
+ ![GitHub Release](https://img.shields.io/github/v/release/maximilianbehr/cuNMF)
 
 **Version:** 1.0.0
 
