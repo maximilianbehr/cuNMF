@@ -2,6 +2,9 @@
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
  ![GitHub Release](https://img.shields.io/github/v/release/maximilianbehr/cuNMF)
+ [![DOI](https://zenodo.org/badge/760630733.svg)](https://zenodo.org/doi/10.5281/zenodo.10844444)
+
+
 
 **Version:** 1.0.0
 
