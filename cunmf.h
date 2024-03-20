@@ -32,7 +32,7 @@ typedef struct cunmf_info_st {
     double* relchange_WH;
     double* relchange_objective;
     double* objective;
-    double time;
+    double* time;
 } cunmf_info_st;
 
 typedef cunmf_info_st* cunmf_info;
@@ -41,6 +41,7 @@ int cunmf_info_create(cunmf_info* info);
 int cunmf_info_destroy(cunmf_info info);
 
 typedef struct cunmf_options_st {
+    double eps;
     int maxiter;
     double maxtime;
     int verbose;
@@ -50,8 +51,16 @@ typedef struct cunmf_options_st {
 
 typedef cunmf_options_st* cunmf_options;
 
-int cunmf_options_create(cunmf_options* opt);
-int cunmf_options_destroy(cunmf_options opt);
+int cunmf_options_screate(cunmf_options* opt);
+int cunmf_options_dcreate(cunmf_options* opt);
+int cunmf_options_ddestroy(cunmf_options opt);
+int cunmf_options_sdestroy(cunmf_options opt);
+
+int cunmf_sMUbeta_buffersize(int m, int n, int k, double beta, size_t* bufferSize);
+int cunmf_sMUbeta(int m, int n, int k, double beta, const float* X, void* buffer, const cunmf_options opt, float* W, float* H, cunmf_info info);
+
+int cunmf_dMUbeta_buffersize(int m, int n, int k, double beta, size_t* bufferSize);
+int cunmf_dMUbeta(int m, int n, int k, double beta, const double* X, void* buffer, const cunmf_options opt, double* W, double* H, cunmf_info info);
 
 #ifdef __cplusplus
 }

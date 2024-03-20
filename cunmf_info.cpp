@@ -55,7 +55,7 @@ int cunmf_info_create(cunmf_info* info) {
      * set default options
      *-----------------------------------------------------------------------------*/
     (*info)->iter = 0;
-    (*info)->time = 0.0;
+    (*info)->time = nullptr;
     (*info)->relchange_WH = nullptr;
     (*info)->relchange_objective = nullptr;
     (*info)->objective = nullptr;
@@ -70,6 +70,12 @@ int cunmf_info_destroy(cunmf_info info) {
     /*-----------------------------------------------------------------------------
      * free memory
      *-----------------------------------------------------------------------------*/
+    if (info) {
+        free(info->time);
+        free(info->relchange_WH);
+        free(info->relchange_objective);
+        free(info->objective);
+    }
     free(info);
 
     /*-----------------------------------------------------------------------------

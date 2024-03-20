@@ -23,11 +23,13 @@
 
 #include <cstdio>
 #include <cstdlib>
+#include <limits>
 
 #include "cunmf.h"
 #include "cunmf_error.h"
 
-int cunmf_options_create(cunmf_options* opt) {
+template <typename T>
+static int cunmf_options_create(cunmf_options* opt) {
     /*-----------------------------------------------------------------------------
      * check if input is nullpointer
      *-----------------------------------------------------------------------------*/
@@ -54,6 +56,7 @@ int cunmf_options_create(cunmf_options* opt) {
     /*-----------------------------------------------------------------------------
      * set default options
      *-----------------------------------------------------------------------------*/
+    (*opt)->eps = std::numeric_limits<T>::epsilon();
     (*opt)->maxiter = 1000;
     (*opt)->maxtime = 360;
     (*opt)->verbose = 1;
@@ -66,7 +69,15 @@ int cunmf_options_create(cunmf_options* opt) {
     return 0;
 }
 
-int cunmf_options_destroy(cunmf_options opt) {
+int cunmf_options_dcreate(cunmf_options* opt) {
+    return cunmf_options_create<double>(opt);
+}
+
+int cunmf_options_screate(cunmf_options* opt) {
+    return cunmf_options_create<float>(opt);
+}
+
+static int cunmf_options_destroy(cunmf_options opt) {
     /*-----------------------------------------------------------------------------
      * free memory
      *-----------------------------------------------------------------------------*/
@@ -76,4 +87,12 @@ int cunmf_options_destroy(cunmf_options opt) {
      * return
      *-----------------------------------------------------------------------------*/
     return 0;
+}
+
+int cunmf_options_ddestroy(cunmf_options opt) {
+    return cunmf_options_destroy(opt);
+}
+
+int cunmf_options_sdestroy(cunmf_options opt) {
+    return cunmf_options_destroy(opt);
 }
