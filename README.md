@@ -45,7 +45,7 @@ int cunmf_dMUbeta(int m, int n, int k, double beta, const float* X, void* buffer
 ## Algorithm
 
 `cuNMF` implements the multiplicative update rules to minimize the $\beta$-divergence for the nonnegative matrix factorization $X\approx W H$, where
-$X$ is of size $m\times n$, $W$ is if size $m\times k$ and $H$ is of size $k\times n$.
+$X$ is of size $m\times n$, $W$ is of size $m\times k$ and $H$ is of size $k\times n$.
 
 In more details, we consider the optimization problem
 
